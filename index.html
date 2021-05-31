@@ -8,6 +8,12 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <script src="index.js" defer></script>
 </head>
+<style>
+  .disabled {
+    color: orange;
+    transition: color 2s ease;
+  }
+</style>
 <body>
   <h1>Hello from HTML!</h1>
   <div id="app">
@@ -17,26 +23,31 @@
     <button v-on:click="killMessage">Kill Message</button>
     <button v-on:click="rezMessage">Resurrect Message</button>
     <button v-on:click="allCaps">YELL</button><br>
-    <br>
+    <div>
     <input type="text" v-model="anotherMessage"><br>
-    <br>
+    </div>
     <!-- <input type="text" v-model="newMessage"> -->
+    <br>
+    <div>
+      <button v-on:click="showInfo = !showInfo">Magic Button</button>
+      <input type="checkbox" v-on:click="showInfo = !showInfo">
+      <p v-if="showInfo">TA DA!!</p>
+      <div>
+      <button v-on:click="fancyColor = !fancyColor">Change Color</button>
+      <p v-bind:class="{ disabled: fancyColor }">Colorful</p>
+      </div>
+    </div>
+    <p>This is a list of places:</p>
+    <ol>
+      <li v-for="place in places">{{ place }}</li>
+    </ol>
+    <input type="text" v-model="newPlace">
+    <button v-on:click="addNewPlace">Add Place</button>
   </div>
-  <div id="app-2">
+  <!-- <div id="app-2">
     <span v-bind:title="message">
       <p>Hover your mouse over me for a few seconds
       to see my dynamically bound title!</p>
     </span>
   </div>
-  <div id="app-3">
-    <span v-if="seen">Now you see me</span>
-  </div>
-  <div id="app-4">
-    <ol>
-      <li v-for="todo in todos">
-        {{ todo.text }}
-      </li>
-    </ol>
-  </div>
-</body>
 </html>

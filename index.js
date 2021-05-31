@@ -4,7 +4,11 @@ var app = new Vue({
   data: function() {
     return {
       message: "Hello from JavaScript!",
-      anotherMessage: "Vue is pretty cool"
+      anotherMessage: "Vue is pretty cool",
+      showInfo: false,
+      fancyColor: false,
+      places: ["Estes Park", "Red Rock Canyon", "Red River Gorge"],
+      newPlace: "",
     };
   },
   methods: {
@@ -20,6 +24,10 @@ var app = new Vue({
     allCaps: function () {
       this.anotherMessage = this.anotherMessage.toUpperCase() + "!!!";
     },
+    addNewPlace: function () {
+      this.places.push(this.newPlace);
+      this.newPlace = "";
+    }
     // newMessage: function () {
     //   this.anotherMessage =
     // }
@@ -27,27 +35,9 @@ var app = new Vue({
   }
 });
 
-var app2 = new Vue({
-  el: '#app-2',
-  data: {
-    message: 'You loaded this page on ' + new Date().toLocaleString()
-  }
-});
-
-var app3 = new Vue({
-  el: '#app-3',
-  data: {
-    seen: true
-  }
-});
-
-var app4 = new Vue({
-  el: '#app-4',
-  data: {
-    todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
-    ]
-  }
-});
+// var app2 = new Vue({
+//   el: '#app-2',
+//   data: {
+//     message: 'You loaded this page on ' + new Date().toLocaleString()
+//   }
+// });
