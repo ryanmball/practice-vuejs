@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Vue.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <h1>Hello from HTML!</h1>
+  <div id="app">
+    <p>{{ message }}</p>
+    <p>{{ anotherMessage }}</p>
+    <button v-on:click="changeMessage">Change</button>
+    <button v-on:click="killMessage">Kill Message</button>
+    <button v-on:click="rezMessage">Resurrect Message</button>
+    <button v-on:click="allCaps">YELL</button><br>
+    <br>
+    <input type="text" v-model="anotherMessage"><br>
+    <br>
+    <!-- <input type="text" v-model="newMessage"> -->
+  </div>
+  <div id="app-2">
+    <span v-bind:title="message">
+      <p>Hover your mouse over me for a few seconds
+      to see my dynamically bound title!</p>
+    </span>
+  </div>
+  <div id="app-3">
+    <span v-if="seen">Now you see me</span>
+  </div>
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+</body>
+</html>
