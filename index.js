@@ -1,4 +1,4 @@
-/* global Vue */
+/* global Vue, axios */
 var app = new Vue({
   el: "#app",
   data: function() {
@@ -9,8 +9,12 @@ var app = new Vue({
       fancyColor: false,
       places: ["Estes Park", "Red Rock Canyon", "Red River Gorge"],
       newPlace: "",
+      todos: [],
     };
   },
+  created: function() {  // responsible for executing code as soon as the DOM is loaded
+    this.loadTodos();
+  }, 
   methods: {
     changeMessage: function () {
       this.anotherMessage = "Goodbye from Javascript!";
@@ -27,11 +31,13 @@ var app = new Vue({
     addNewPlace: function () {
       this.places.push(this.newPlace);
       this.newPlace = "";
+    },
+    loadTodos: function() {
+      axios.get("https://jsonplaceholder.typicode.com/todos").then(response => {
+        console.log(response.data);
+        this.todos = response.data;
+      });
     }
-    // newMessage: function () {
-    //   this.anotherMessage =
-    // }
-    // Want to figure out how to use an input box and submit button to update variables
   }
 });
 
